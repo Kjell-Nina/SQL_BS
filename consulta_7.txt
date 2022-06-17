@@ -1,0 +1,8 @@
+--¿En qué año hubo el mayor número de contrataciones y cuántas contrataciones fueron?
+
+SELECT
+	COUNT (e.hire_date) AS contract,
+	EXTRACT(YEAR FROM e.hire_date) AS year
+FROM public.employees e
+GROUP BY year
+ORDER BY contract DESC

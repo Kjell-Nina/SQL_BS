@@ -1,0 +1,11 @@
+--Escribe una consulta que enliste el nombre y el apellido SIN REPETICIONES de los
+empleados que hayan tenido alguna vez un salario dentro del rango 24,000 USD - 50,000
+USD .
+
+SELECT e.first_name,
+		e.last_name
+FROM public.employees e
+JOIN public.salaries s ON (s.emp_no=e.emp_no)
+WHERE s.salary BETWEEN 24000 AND 50000
+GROUP BY e.first_name, e.last_name
+ORDER BY e.first_name, e.last_name

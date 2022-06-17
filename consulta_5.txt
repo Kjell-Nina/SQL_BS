@@ -1,0 +1,14 @@
+--Ordena el nombre de los departamentos de acuerdo al salario promedio de sus
+empleados en el año 1998 de mayor a menor. Hazlo de dos formas, utilizando la función
+BETWEEN y sin usar la función BETWEEN
+Con BETWEEN:
+
+SELECT d.dept_name,
+		AVG(s.salary) AS salary_prom_1998
+FROM public.departments d
+JOIN public.dept_emp de ON (de.dept_no=d.dept_no)
+JOIN public.salaries s ON (s.emp_no=de.emp_no)
+WHERE de.from_date BETWEEN '1998-01-01' AND '1998-12-31'
+AND de.to_date BETWEEN '1998-01-01' AND '1998-12-31'
+GROUP BY d.dept_name
+ORDER BY salary_prom_1998 DESC
